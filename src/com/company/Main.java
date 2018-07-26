@@ -1,14 +1,17 @@
 package com.company;
 
 
+import java.io.Console;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static ArrayList<Stock> listOfStock = new ArrayList<>();
 
     public static void main(String[] args) {
-        String[] tickerSymbol = {
-                "TsLa", "AAPL", "SNAP", "GOOG", "FB"
+        ArrayList<String> tickerSymbol = new ArrayList<String>();
+
+//                "TsLa", "AAPL", "SNAP", "GOOG", "FB"
 //                "AAL", "ABF", "ADM", "AHT", "ANTO", "AV", "AZN", "BA", "BAB", "BARC", "BATS", "BDEV",
 //                "BLND", "BLT", "BNZL", "BP", "BRBY", "BT.A", "CCH", "CCL", "CNA", "CPG", "CRDA", "CRH", "CTEC", "DCC",
 //                "DGE", "DLG", "EXPN", "EZJ", "FERG", "FRES", "GFS", "GKN", "GLEN", "GSK", "HL", "HMSO", "HSBA", "IAG",
@@ -20,24 +23,33 @@ public class Main {
 //                "FGP", "FXPO", "GNC", "GNS", "HCM", "HFD", "HWDN", "INCH", "JD", "JDW", "KAZ", "KBT", "LAM", "MONY", "MPE",
 //                "NEX", "NXG", "OCDO", "PNN", "QQ", "RMV", "RNK", "SHB", "SHI", "TALK", "TCAP", "VEC", "VSVS",
 //                "YOU", "ZYT"
-        };
 
-        for (int i = 0; i < tickerSymbol.length; i++) {
 
-            listOfStock.add(new Stock(tickerSymbol[i].toUpperCase()));
+        Scanner in = new Scanner(System.in);
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Please enter the stock you would like to analyse.");
+            String s = in.next();
+            tickerSymbol.add(s);
+        }
+        System.out.println("Thank you. ");
+
+
+
+        for (int i = 0; i < tickerSymbol.size(); i++) {
+
+            listOfStock.add(new Stock(tickerSymbol.get(i).toUpperCase()));
             if (listOfStock.get(i).gottenSymbol == true) {
 
-//                System.out.println("" + listOfStock.get(i).getName());
-//                System.out.println("Ticker Symbol: " + listOfStock.get(i).getTickerSymbol());
-//                System.out.println("Polarity for: " + listOfStock.get(i).getTickerSymbol() + " is " + listOfStock.get(i).getPolarity());
-//                System.out.println("Price: " + listOfStock.get(i).getPrice());
-//                System.out.println("Exchange: " + listOfStock.get(i).getExchange());
-//                System.out.println(" ");
+                System.out.println("" + listOfStock.get(i).getName());
+                System.out.println("Ticker Symbol: " + listOfStock.get(i).getTickerSymbol());
+                System.out.println("Polarity for: " + listOfStock.get(i).getTickerSymbol() + " is " + listOfStock.get(i).getPolarity());
+                System.out.println("Price: " + listOfStock.get(i).getPrice());
+                System.out.println("Exchange: " + listOfStock.get(i).getExchange());
+                System.out.println(" ");
 
 
                 Scoring score = new Scoring(listOfStock.get(i));
 //                System.out.println(listOfStock.get(i).getScore());
-
 
 
             } else {
@@ -51,14 +63,14 @@ public class Main {
         int[] sorter = new int[listOfStock.size()];
         for (int i = 0; i < listOfStock.size(); i++) {
 
-        sorter[i] = (int) listOfStock.get(i).getScore();
+            sorter[i] = (int) listOfStock.get(i).getScore();
 
         }
         sorter = Sorter.sort(sorter);
         for (int i = 0; i < sorter.length; i++) {
             for (int j = 0; j < listOfStock.size(); j++) {
-                if (sorter[i] == listOfStock.get(j).getScore()){
-                    System.out.println(listOfStock.get(j).getTickerSymbol() + ": " +listOfStock.get(j).getScore());
+                if (sorter[i] == listOfStock.get(j).getScore()) {
+                    System.out.println(listOfStock.get(j).getTickerSymbol() + ": " + listOfStock.get(j).getScore());
                 }
             }
         }
