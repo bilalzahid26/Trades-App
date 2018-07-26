@@ -355,8 +355,8 @@ public class Stock {
 
         int polarity = 0;
 
-        String csvFile = "/Users/BilalZahid/Desktop/Computer Science/Github/Stock API Test/positive-words.csv";
-        String csvFile1 = "/Users/BilalZahid/Desktop/Computer Science/Github/Stock API Test/negative-words.csv";
+        String csvFile = "/Users/BilalZahid/Desktop/Computer Science/Github/Trades-App/positive-words.csv";
+        String csvFile1 = "/Users/BilalZahid/Desktop/Computer Science/Github/Trades-App/negative-words.csv";
         String[] articleWords = article.split(" ");
         String[] negativeWord = new String[0];
         String[] positiveWord = new String[0];
@@ -414,7 +414,6 @@ public class Stock {
 
 
     }
-
 
     public long getScore() {
         return score;
